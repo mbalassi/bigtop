@@ -20,6 +20,9 @@ set -ex
 #load versions
 . `dirname $0`/bigtop.bom
 
+FLINK_BUILD_OPTS="-Pvendor-repos -Pinclude-hadoop"
+HADOOP_VERSION=3.0.0-cdh6.2.0
+
 # Use Maven to build Flink from source
 mvn install $FLINK_BUILD_OPTS -Drat.skip=true -DskipTests -Dhadoop.version=$HADOOP_VERSION "$@"
 cd flink-dist
